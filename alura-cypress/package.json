@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cypress open"
+    "test": "cypress open",
+    "report": "cypress run --reporter mochawesome"
   },
   "author": "Yasmin",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "^12.2.0"
+    "cypress": "^12.2.0",
+    "mochawesome": "^7.1.3"
   }
 }
