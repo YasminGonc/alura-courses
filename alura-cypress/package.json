@@ -1,0 +1,14 @@
+{
+  "name": "alura-cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "author": "Yasmin",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^12.2.0"
+  }
+}
