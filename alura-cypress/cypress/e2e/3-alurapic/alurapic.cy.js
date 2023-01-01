@@ -34,15 +34,28 @@ describe('Login e registro de usuarios alurapic', () => {
         cy.contains('ap-vmessage', 'Mininum length is 8'). should('be.visible');
     })
 
-    it.only('fazer login de usuario valido', () => {
+    it('fazer login de usuario valido', () => {
         cy.login('flavio', '123');
         cy.contains('a', 'Logout').should('be.visible');
     })
 
-    it.only('fazer login de usuario invalido', () => {
+    it('fazer login de usuario invalido', () => {
         cy.login('yasmin', '1234');
         cy.on('window:alert', (str) => {
             expect(str).to.equal('Invalid user name or password')
+        })
+    })
+
+    const users = require('../../fixtures/users.json');
+    users.forEach(user => {
+        it.only(`registra novo usuario ${user.usrName}`, () => {
+            cy.contains('a', 'Register now').click();
+            cy.contains('button', "Register").click();
+            cy.get('input[formcontrolname="email"]').type(user.email);
+            cy.get('input[formcontrolname="fullName"]').type(user.fullName);
+            cy.get('input[formcontrolname="userName"]').type(user.usrName);
+            cy.get('input[formcontrolname="password"]').type(user.password);
+            cy.contains('button', "Register").click();
         })
     })
 })
